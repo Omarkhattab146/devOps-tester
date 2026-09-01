@@ -1,0 +1,30 @@
+name: run tests automated
+
+on:
+  pull_request:
+    branches: main
+
+  push:
+    branches: main
+
+  workflow_dispatch: # run the workflow manually
+  workflow_call:     # run the workflow as a subworkflow, used to call the workflow from another workflow
+                     # workflow_call is a predefined trigger that lets other workflows trigger this workflow. 
+
+# Github-username/repo/path/to/workflow@version
+# It should start with the GitHub username and repository name, followed by the path to the workflow file you want to use. @master tells the new workflow that you want to use the version of the testing workflow from the master branch.
+# realpython/reader/.github/workflows/test.yml@master
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check Python
+        run: python --version
+
+      - name: Check pip
+        run: pip --version
+
+      - name: Run tests
+        # Github-username/repo/path/to/workflow@version
+        uses: Omarkhattab146/devOps-tester/.github/workflows/test.yml@main
