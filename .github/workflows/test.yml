@@ -1,4 +1,4 @@
-name: run tests automated
+name: Run Tests Automated
 
 on:
   pull_request:
