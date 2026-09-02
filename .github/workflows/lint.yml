@@ -24,3 +24,6 @@ jobs:
       - name: Check pip
         run: pip --version
 
+      - name: Lint Python Code
+        uses: Omarkhattab146/devOps-tester/.github/workflows/test.yml@main
+
