@@ -11,10 +11,12 @@ on:
   
 
 jobs:
+  call-tests:
+    uses: ./.github/workflows/test.yml
+  
   lint: # The name of the job
     runs-on: ubuntu-latest
     steps:
-      - uses: Omarkhattab146/devOps-tester/.github/workflows/test.yml@main
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
